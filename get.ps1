@@ -21,7 +21,7 @@ $jobs = @()
 foreach ($app in $apps) {
     $jobs += Start-Job -ScriptBlock {
         Write-Host "Downloading $app..."
-        winget install --id $using:app --exact --source $using:source --silent --accept-license --dry-run
+        winget install --id $using:app --exact --source $using:source --silent --dry-run
     }
 }
 
@@ -46,11 +46,12 @@ foreach ($app in $apps) {
         
         try {
             # Instalasi aplikasi dengan error handling
-            winget install --id $app --exact --source $source --silent --accept-license
+            winget install --id $app --exact --source $source --silent
         } catch {
             Write-Host "Error installing $app. Please check the installer and try again."
         }
     }
 }
+
 
 Write-Host "Process complete."
