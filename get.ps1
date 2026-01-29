@@ -21,7 +21,7 @@ $jobs = @()
 foreach ($app in $apps) {
     $jobs += Start-Job -ScriptBlock {
         Write-Host "Downloading $app..."
-        winget install --id $using:app --exact --source $using:source --silent --dry-run
+        winget install --id $using:app --exact --source $using:source --silent
     }
 }
 
@@ -55,3 +55,4 @@ foreach ($app in $apps) {
 
 
 Write-Host "Process complete."
+
